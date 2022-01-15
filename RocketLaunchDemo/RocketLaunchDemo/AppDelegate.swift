@@ -3,7 +3,7 @@
 // RocketLaunchDemo
 //
 // Created on 15.01.2022.
-// Copyright (c)  APPWOX. All rights reserved.
+// Oguzhan Yalcin
 //
 //
 //
