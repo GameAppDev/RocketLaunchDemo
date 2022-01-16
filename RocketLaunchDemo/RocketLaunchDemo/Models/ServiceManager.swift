@@ -56,6 +56,44 @@ class ServiceManager {
             }
         })
     }
+    
+    func getRocketLaunchesUpcoming(parameters:String?, _ completion:@escaping ([LaunchUpcomingResponse]?, Bool) -> () )  {
+        
+        let errorCode = "1001"
+        
+        let headers = [ "Content-Type":"application/json",
+                        "Accept": "application/json"]
+        let httpHeaders = HTTPHeaders(headers)
+        
+        let theUrl:String = baseUrl + "/upcoming"
+        
+        NAIM.startNetworkOperation()
+        AF.request(theUrl, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: httpHeaders).responseData(completionHandler: { (response) in
+            NAIM.stopNetworkOperation()
+            guard let data = response.data else {
+                completion(nil, false)
+                return
+            }
+            do {
+                //let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
+                let json = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>]
+                print("\(String(describing: json))")
+                
+                let theResponse = try JSONDecoder().decode([LaunchUpcomingResponse].self, from: data)
+                
+                guard theResponse.count > 0 else {
+                    completion(nil, false)
+                    return
+                }
+                
+                completion(theResponse, true)
+                
+            } catch {
+                print("\(errorCode) Decoder Error!")
+                completion(nil, false)
+            }
+        })
+    }
 }
 
 class NAIM: NSObject {

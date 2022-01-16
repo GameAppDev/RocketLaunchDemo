@@ -9,8 +9,6 @@
 //
 
 import UIKit
-import AVKit
-import AVFoundation
 import Foundation
 
 extension UITableView {
@@ -76,5 +74,12 @@ extension UIView {
         gradientLayer.bounds = self.bounds
         gradientLayer.anchorPoint = CGPoint.zero
         self.layer.addSublayer(gradientLayer)
+    }
+}
+
+extension CGFloat {
+    
+    var dp: CGFloat {
+            return (self / 320) * UIScreen.main.bounds.width
     }
 }

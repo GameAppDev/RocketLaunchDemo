@@ -94,6 +94,7 @@
                             <constraint firstItem="eFT-GI-EiP" firstAttribute="leading" secondItem="yHc-DJ-edc" secondAttribute="trailing" id="O37-zo-IjW"/>
                             <constraint firstItem="eFT-GI-EiP" firstAttribute="top" secondItem="7u6-Dp-htn" secondAttribute="bottom" id="PpH-C3-hii"/>
                             <constraint firstItem="QtQ-ts-kHX" firstAttribute="top" secondItem="Mmu-HR-k0m" secondAttribute="top" id="Tl4-8d-yWk"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="83" id="g0l-0A-K8G"/>
                             <constraint firstAttribute="bottom" secondItem="kpW-C5-Nw4" secondAttribute="bottom" id="gGd-VZ-SJf"/>
                             <constraint firstItem="kpW-C5-Nw4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yHc-DJ-edc" secondAttribute="trailing" id="ihC-fh-Jn3"/>
                             <constraint firstAttribute="bottom" secondItem="yHc-DJ-edc" secondAttribute="bottom" id="je3-1R-i9l"/>
