@@ -24,6 +24,10 @@ class ListViewController: UIViewController {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
+        theTableView.registerCell(identifier: identifierL)
+        theTableView.dataSource = self
+        theTableView.delegate = self
+        
         getRocketLaunches()
     }
 
@@ -36,11 +40,28 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        launchCell = theTableView.dequeueReusableCell(withIdentifier: identifierL, for: indexPath) as? LaunchTableViewCell
+        
+        let launch = launchResponse[indexPath.row]
+        
+        launchCell?.downloadImage(imageKey: launch.links?.mission_patch_small ?? "")
+        
+        launchCell?.titleLabel.text = launch.mission_name
+        launchCell?.descriptionLabel.text = (launch.details ?? "")
+        
+        let launchDate = launch.launch_date_utc?.toDate()
+        let formattedLaunchDate = launchDate?.toString(formatType: "dd-MM-yyyy")
+        launchCell?.dateLabel.text = formattedLaunchDate
+        
+        return launchCell!
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let launchDetailVC = appDelegate.theStoryboard.instantiateViewController(withIdentifier: "LaunchDetailVC") as? LaunchDetailViewController {
+            launchDetailVC.selectedLaunch = launchResponse[indexPath.row]
+            navigationController?.pushViewController(launchDetailVC, animated: true)
+        }
+    }
 }
 
 extension ListViewController {
@@ -48,10 +69,9 @@ extension ListViewController {
     func getRocketLaunches() {
         ServiceManager.connected.getRocketLaunches(parameters: nil) { (response, isOK) in
             if isOK {
+                self.launchResponse = response ?? []
                 
-            }
-            else {
-                
+                self.theTableView.reloadData()
             }
         }
     }

@@ -16,10 +16,6 @@
 		18A0C1412792F88E00FAD30C /* LaunchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0C1402792F88E00FAD30C /* LaunchDetailViewController.swift */; };
 		18A0C1432792FC3600FAD30C /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0C1422792FC3600FAD30C /* DataModels.swift */; };
 		18A0C1462793084100FAD30C /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0C1452793084100FAD30C /* ServiceManager.swift */; };
-		18AF0B9F27942101002E5499 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF0B9D27942101002E5499 /* ImageTableViewCell.swift */; };
-		18AF0BA027942101002E5499 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0B9E27942101002E5499 /* ImageTableViewCell.xib */; };
-		18AF0BA327942132002E5499 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF0BA127942132002E5499 /* TextTableViewCell.swift */; };
-		18AF0BA427942132002E5499 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0BA227942132002E5499 /* TextTableViewCell.xib */; };
 		18AF0BA72794214A002E5499 /* LaunchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF0BA52794214A002E5499 /* LaunchTableViewCell.swift */; };
 		18AF0BA82794214A002E5499 /* LaunchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0BA62794214A002E5499 /* LaunchTableViewCell.xib */; };
 		18AF0BAA279428A1002E5499 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF0BA9279428A1002E5499 /* Extensions.swift */; };
@@ -38,10 +34,6 @@
 		18A0C1402792F88E00FAD30C /* LaunchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewController.swift; sourceTree = "<group>"; };
 		18A0C1422792FC3600FAD30C /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		18A0C1452793084100FAD30C /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
-		18AF0B9D27942101002E5499 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
-		18AF0B9E27942101002E5499 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
-		18AF0BA127942132002E5499 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
-		18AF0BA227942132002E5499 /* TextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
 		18AF0BA52794214A002E5499 /* LaunchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTableViewCell.swift; sourceTree = "<group>"; };
 		18AF0BA62794214A002E5499 /* LaunchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchTableViewCell.xib; sourceTree = "<group>"; };
 		18AF0BA9279428A1002E5499 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -108,10 +100,6 @@
 		18A0C13A2792F7C600FAD30C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				18AF0B9D27942101002E5499 /* ImageTableViewCell.swift */,
-				18AF0B9E27942101002E5499 /* ImageTableViewCell.xib */,
-				18AF0BA127942132002E5499 /* TextTableViewCell.swift */,
-				18AF0BA227942132002E5499 /* TextTableViewCell.xib */,
 				18AF0BA52794214A002E5499 /* LaunchTableViewCell.swift */,
 				18AF0BA62794214A002E5499 /* LaunchTableViewCell.xib */,
 			);
@@ -223,8 +211,6 @@
 			files = (
 				18AF0BA82794214A002E5499 /* LaunchTableViewCell.xib in Resources */,
 				18A0C1302792F41700FAD30C /* LaunchScreen.storyboard in Resources */,
-				18AF0BA427942132002E5499 /* TextTableViewCell.xib in Resources */,
-				18AF0BA027942101002E5499 /* ImageTableViewCell.xib in Resources */,
 				18A0C12D2792F41700FAD30C /* Assets.xcassets in Resources */,
 				18A0C12B2792F41500FAD30C /* Main.storyboard in Resources */,
 			);
@@ -279,9 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18AF0B9F27942101002E5499 /* ImageTableViewCell.swift in Sources */,
 				18A0C1412792F88E00FAD30C /* LaunchDetailViewController.swift in Sources */,
-				18AF0BA327942132002E5499 /* TextTableViewCell.swift in Sources */,
 				18A0C1242792F41500FAD30C /* AppDelegate.swift in Sources */,
 				18A0C1432792FC3600FAD30C /* DataModels.swift in Sources */,
 				18AF0BAA279428A1002E5499 /* Extensions.swift in Sources */,

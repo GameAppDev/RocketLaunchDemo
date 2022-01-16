@@ -18,7 +18,7 @@ struct LaunchResponse:Codable {
     //let upcoming:Int?//Bool?
     //let launch_year:Int?
     //let launch_date_unix:Float?
-    //let launch_date_utc:String?
+    let launch_date_utc:String?
     //let is_tentative:Int?//Bool?
     //let tentative_max_precision:String?
     //let tbd:Int? //Bool?
@@ -29,7 +29,7 @@ struct LaunchResponse:Codable {
     //let launch_site:LaunchSite?
     //let launch_success:Int?//Bool?
     //let launch_failure_details:LaunchFailureDetails?
-    //let links:Links?
+    let links:Links?
     let details:String?
     //let static_fire_date_utc:String?
     //let static_fire_date_unix:Float?
