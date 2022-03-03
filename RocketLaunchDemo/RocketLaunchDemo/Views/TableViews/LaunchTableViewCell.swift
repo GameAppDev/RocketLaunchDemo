@@ -20,11 +20,18 @@ class LaunchTableViewCell: UITableViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     
+    @IBOutlet var cellViewHeightC: NSLayoutConstraint!
+    
     let identifierL:String = "LaunchTableViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        titleLabel.textColor = UIColor.titleColor
+        descriptionLabel.textColor = UIColor.textColor
+        dateLabel.textColor = UIColor.textColor
+        
+        cellViewHeightC.constant = CGFloat(83).ws
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -26,12 +26,21 @@ class RootViewController: UIViewController {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
+        DispatchQueue.main.async {
+            self.setupViews()
+        }
+        
         if let ListNC = appDelegate.theStoryboard.instantiateViewController(withIdentifier: "ListNC") as? UINavigationController {
             activeNC?.view.removeFromSuperview()
             activeView.addSubview(ListNC.view!)
             
             activeNC = ListNC
         }
+    }
+    
+    func setupViews() {
+        topSafeArea.backgroundColor = UIColor.lightGray
+        bottomSafeArea.backgroundColor = UIColor.clear
     }
     
     func stateActivityIndicator(isOn:Bool) {

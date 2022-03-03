@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="280" height="230"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BEF-9S-k2n">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyRocketIcon" translatesAutoresizingMaskIntoConstraints="NO" id="BEF-9S-k2n">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="230"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
@@ -49,6 +49,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="EmptyRocketIcon" width="1200" height="1200"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

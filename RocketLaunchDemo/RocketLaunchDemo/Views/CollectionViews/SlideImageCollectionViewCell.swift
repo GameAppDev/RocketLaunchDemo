@@ -21,7 +21,8 @@ class SlideImageCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        theLabel.textColor = UIColor.titleBlueColor
     }
 
     func downloadImage(imageKey:String) {

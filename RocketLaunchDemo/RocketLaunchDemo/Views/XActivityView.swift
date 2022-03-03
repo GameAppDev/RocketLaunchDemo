@@ -8,6 +8,7 @@
 //
 //
 
+
 import UIKit
 
 class XActivityView: UIView {

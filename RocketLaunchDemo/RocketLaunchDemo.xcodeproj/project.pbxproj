@@ -25,6 +25,7 @@
 		18AF0BB427945083002E5499 /* SlideImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0BB227945083002E5499 /* SlideImageCollectionViewCell.xib */; };
 		18AF0BB727947414002E5499 /* XActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF0BB527947414002E5499 /* XActivityView.swift */; };
 		18AF0BB827947414002E5499 /* XActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0BB627947414002E5499 /* XActivityView.xib */; };
+		18F3B1CB27D11CC600E520A5 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B1CA27D11CC600E520A5 /* AppStyle.swift */; };
 		848009E44896D37E76EB5B22 /* Pods_RocketLaunchDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A00492807CF5416587EA20 /* Pods_RocketLaunchDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		18AF0BB227945083002E5499 /* SlideImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		18AF0BB527947414002E5499 /* XActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XActivityView.swift; sourceTree = "<group>"; };
 		18AF0BB627947414002E5499 /* XActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XActivityView.xib; sourceTree = "<group>"; };
+		18F3B1CA27D11CC600E520A5 /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		67A00492807CF5416587EA20 /* Pods_RocketLaunchDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RocketLaunchDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E9AC32881A0ADB31D66F10 /* Pods-RocketLaunchDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketLaunchDemo.debug.xcconfig"; path = "Target Support Files/Pods-RocketLaunchDemo/Pods-RocketLaunchDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		ECE9D67D3BBA78D2351DE3DC /* Pods-RocketLaunchDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketLaunchDemo.release.xcconfig"; path = "Target Support Files/Pods-RocketLaunchDemo/Pods-RocketLaunchDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +114,8 @@
 		18A0C13A2792F7C600FAD30C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				18AF0BB527947414002E5499 /* XActivityView.swift */,
+				18AF0BB627947414002E5499 /* XActivityView.xib */,
 				18AF0BB027945063002E5499 /* CollectionViews */,
 				18AF0BAF2794504D002E5499 /* TableViews */,
 			);
@@ -121,9 +125,8 @@
 		18A0C13B2792F7D200FAD30C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				18AF0BB527947414002E5499 /* XActivityView.swift */,
-				18AF0BB627947414002E5499 /* XActivityView.xib */,
 				18AF0BA9279428A1002E5499 /* Extensions.swift */,
+				18F3B1CA27D11CC600E520A5 /* AppStyle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				18A0C1412792F88E00FAD30C /* LaunchDetailViewController.swift in Sources */,
 				18A0C1242792F41500FAD30C /* AppDelegate.swift in Sources */,
 				18AF0BB327945083002E5499 /* SlideImageCollectionViewCell.swift in Sources */,
+				18F3B1CB27D11CC600E520A5 /* AppStyle.swift in Sources */,
 				18A0C1432792FC3600FAD30C /* DataModels.swift in Sources */,
 				18AF0BAA279428A1002E5499 /* Extensions.swift in Sources */,
 				18AF0BAD27944714002E5499 /* SlideTableViewCell.swift in Sources */,

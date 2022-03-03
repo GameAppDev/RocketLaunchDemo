@@ -18,7 +18,7 @@ class SlideTableViewCell: UITableViewCell {
     @IBOutlet var pageControl: UIPageControl!
     
     let identifierS:String = "SlideTableViewCell"
-    //slideImageCollCell
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,5 +29,4 @@ class SlideTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

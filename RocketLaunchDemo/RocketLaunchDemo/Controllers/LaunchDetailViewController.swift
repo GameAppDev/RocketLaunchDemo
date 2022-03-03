@@ -26,22 +26,44 @@ class LaunchDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
         
-        setupViews()
+        DispatchQueue.main.async {
+            self.setupViews()
+        }
         
-        setSelectedLaunch()
+        DispatchQueue.global(qos: .userInitiated).sync { //called  first
+            self.setSelectedLaunch()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.navBarBGColor
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.lightGray
+    }
+    
+    func setupViews() {
+        backView.backgroundColor = UIColor.navBarBGColor
     }
     
     func setSelectedLaunch() {
         if let launch = selectedLaunch {
-            downloadImage(imageKey: launch.links?.mission_patch ?? "")
+            if let image = launch.links?.mission_patch {
+                downloadImage(imageKey: image)
+            }
             
             titleLabel.text = launch.mission_name
             descriptionLabel.text = launch.details
             
-            let launchDate = launch.launch_date_utc?.toDate()
-            let formattedLaunchDate = launchDate?.toString(formatType: "dd-MM-yyyy")
-            dateLabel.text = formattedLaunchDate
+            if let rocketDate = launch.launch_date_utc {
+                let launchDate = rocketDate.toDate()
+                let formattedLaunchDate = launchDate.toString(formatType: "dd-MM-yyyy")
+                dateLabel.text = formattedLaunchDate
+            }
         }
     }
     
@@ -69,18 +91,5 @@ class LaunchDetailViewController: UIViewController {
     
     @IBAction func backClicked(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
-    }
-}
-
-extension LaunchDetailViewController {
-    
-    func setupViews() {
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
-        
-        backView.showGradientColors([
-            UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1),
-            UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-        ], direction: .horizontal)
     }
 }

@@ -37,7 +37,9 @@ class ListViewController: UIViewController {
         theTableView.dataSource = self
         theTableView.delegate = self
         
-        getRocketLaunches()
+        DispatchQueue.global(qos: .userInitiated).sync {
+            self.getRocketLaunches()
+        }
     }
 }
 
@@ -65,14 +67,20 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
             
             let launch = launchResponse[indexPath.row-1]
             
-            launchCell?.downloadImage(imageKey: launch.links?.mission_patch_small ?? "")
+            if let image = launch.links?.mission_patch {
+                launchCell?.downloadImage(imageKey: image)
+            }
             
             launchCell?.titleLabel.text = launch.mission_name
-            launchCell?.descriptionLabel.text = (launch.details ?? "")
+            if let details = launch.details {
+                launchCell?.descriptionLabel.text = details
+            }
             
-            let launchDate = launch.launch_date_utc?.toDate()
-            let formattedLaunchDate = launchDate?.toString(formatType: "dd-MM-yyyy")
-            launchCell?.dateLabel.text = formattedLaunchDate
+            if let rocketDate = launch.launch_date_utc {
+                let launchDate = rocketDate.toDate()
+                let formattedLaunchDate = launchDate.toString(formatType: "dd-MM-yyyy")
+                launchCell?.dateLabel.text = formattedLaunchDate
+            }
             
             return launchCell!
         }
@@ -99,8 +107,10 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
         imageCollCell = collectionView.dequeueReusableCell(withReuseIdentifier: "slideImageCollCell", for: indexPath) as? SlideImageCollectionViewCell
 
         let launchUpcoming = launchUpcomingResponse[indexPath.row]
-        imageCollCell?.theImageView.image = UIImage(named: "EmptyRocketIcon")
-        imageCollCell?.downloadImage(imageKey: launchUpcoming.links?.mission_patch ?? "")
+        
+        if let image = launchUpcoming.links?.mission_patch {
+            imageCollCell?.downloadImage(imageKey: image)
+        }
         imageCollCell?.theLabel.text = launchUpcoming.mission_name
         
         slideCell?.pageControl.numberOfPages = launchUpcomingResponse.count //TableView Item
@@ -110,7 +120,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(280).dp, height: CGFloat(230).dp)
+        return CGSize(width: CGFloat(280).ws, height: CGFloat(230).ws)
     }
     /*
     @objc func swipeRecognized(gesture: UIGestureRecognizer) {
@@ -153,12 +163,16 @@ extension ListViewController {
     
     func getRocketLaunches() {
         appDelegate.rootVC.stateActivityIndicator(isOn: true)
-        ServiceManager.connected.getRocketLaunches(parameters: nil) { (response, isOK) in
+        ServiceManager.shared.getRocketLaunches(parameters: nil) { (response, isOK) in
             appDelegate.rootVC.stateActivityIndicator(isOn: false)
             if isOK {
-                self.launchResponse = response ?? []
+                if let rocketResponse = response {
+                    self.launchResponse = rocketResponse
+                }
                 
-                self.theTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.theTableView.reloadData()
+                }
                 
                 self.getRocketLaunchesUpcoming()
             }
@@ -167,7 +181,7 @@ extension ListViewController {
     
     func getRocketLaunchesUpcoming() {
         appDelegate.rootVC.stateActivityIndicator(isOn: true)
-        ServiceManager.connected.getRocketLaunchesUpcoming(parameters: nil) { (response, isOK) in
+        ServiceManager.shared.getRocketLaunchesUpcoming(parameters: nil) { (response, isOK) in
             appDelegate.rootVC.stateActivityIndicator(isOn: false)
             if isOK {
                 self.fillUpcomingResponse(upcomingResponse: response ?? [])
@@ -189,6 +203,8 @@ extension ListViewController {
             }
         }
         
-        slideCell?.theCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.slideCell?.theCollectionView.reloadData()
+        }
     }
 }

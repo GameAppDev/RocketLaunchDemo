@@ -8,6 +8,7 @@
 //
 //
 
+
 import UIKit
 import Foundation
 
@@ -79,7 +80,7 @@ extension UIView {
 
 extension CGFloat {
     
-    var dp: CGFloat {
-            return (self / 320) * UIScreen.main.bounds.width
+    var ws: CGFloat {
+        return (self / 320) * UIScreen.main.bounds.width
     }
 }

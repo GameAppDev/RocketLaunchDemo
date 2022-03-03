@@ -31,10 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func openRoot() {
-        self.rootVC = self.theStoryboard.instantiateViewController(withIdentifier: "RootVC") as? RootViewController
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = self.rootVC
-        self.window?.makeKeyAndVisible()
+        rootVC = self.theStoryboard.instantiateViewController(withIdentifier: "RootVC") as? RootViewController
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = rootVC
+        window?.makeKeyAndVisible()
     }
 }
 

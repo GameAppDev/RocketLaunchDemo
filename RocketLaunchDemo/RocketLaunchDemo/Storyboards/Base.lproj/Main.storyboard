@@ -106,13 +106,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDA-Cv-QFZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDA-Cv-QFZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="BACK">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="BackIcon">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="backClicked:" destination="qQC-kZ-4eM" eventType="touchUpInside" id="gI0-7f-vvZ"/>
@@ -127,6 +126,7 @@
                                     <constraint firstAttribute="bottom" secondItem="lDA-Cv-QFZ" secondAttribute="bottom" id="fMD-Mh-Hxl"/>
                                     <constraint firstItem="lDA-Cv-QFZ" firstAttribute="leading" secondItem="tbD-Ly-I5w" secondAttribute="leading" id="hzz-p6-Vsi"/>
                                     <constraint firstItem="lDA-Cv-QFZ" firstAttribute="top" secondItem="tbD-Ly-I5w" secondAttribute="top" id="iaA-hS-OiB"/>
+                                    <constraint firstItem="lDA-Cv-QFZ" firstAttribute="width" secondItem="tbD-Ly-I5w" secondAttribute="width" multiplier="0.0938" id="jUi-3y-EiD"/>
                                     <constraint firstItem="13V-eW-P4r" firstAttribute="top" secondItem="tbD-Ly-I5w" secondAttribute="top" id="oUV-KS-jHQ"/>
                                     <constraint firstAttribute="trailing" secondItem="13V-eW-P4r" secondAttribute="trailing" id="rvi-Ft-40L"/>
                                 </constraints>
@@ -169,14 +169,15 @@
                                             <constraint firstAttribute="width" secondItem="52t-d7-qYq" secondAttribute="height" multiplier="28:3" id="lae-1B-kmm"/>
                                         </constraints>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e84-TZ-uRm">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyRocketIcon" translatesAutoresizingMaskIntoConstraints="NO" id="e84-TZ-uRm">
                                         <rect key="frame" x="0.0" y="10" width="280" height="230"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="e84-TZ-uRm" secondAttribute="height" multiplier="28:23" id="A3V-fa-mOJ"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2S0-k0-7dR">
-                                        <rect key="frame" x="0.0" y="260" width="35.5" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2S0-k0-7dR">
+                                        <rect key="frame" x="0.0" y="260" width="85.5" height="23"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="9Lm-Rm-Q3W"/>
@@ -185,8 +186,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-QM-cyT">
-                                        <rect key="frame" x="251" y="491" width="29" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-QM-cyT">
+                                        <rect key="frame" x="220" y="491" width="60" height="17"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="Y1F-aX-EgG"/>
@@ -198,7 +199,7 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwE-4q-D0L">
                                         <rect key="frame" x="0.0" y="298" width="280" height="19.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxE-lE-Obd">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxE-lE-Obd">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="19.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -301,4 +302,8 @@
             <point key="canvasLocation" x="1541.25" y="91.901408450704224"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackIcon" width="30" height="30"/>
+        <image name="EmptyRocketIcon" width="1200" height="1200"/>
+    </resources>
 </document>
