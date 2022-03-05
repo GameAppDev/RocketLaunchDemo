@@ -38,7 +38,7 @@ class RootViewController: UIViewController {
         }
     }
     
-    func setupViews() {
+    private func setupViews() {
         topSafeArea.backgroundColor = UIColor.lightGray
         bottomSafeArea.backgroundColor = UIColor.clear
     }

@@ -33,9 +33,7 @@ class LaunchDetailViewController: UIViewController {
             self.setupViews()
         }
         
-        DispatchQueue.global(qos: .userInitiated).sync { //called  first
-            self.setSelectedLaunch()
-        }
+        setSelectedLaunch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,11 +44,11 @@ class LaunchDetailViewController: UIViewController {
         appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.lightGray
     }
     
-    func setupViews() {
+    private func setupViews() {
         backView.backgroundColor = UIColor.navBarBGColor
     }
     
-    func setSelectedLaunch() {
+    private func setSelectedLaunch() {
         if let launch = selectedLaunch {
             if let image = launch.links?.mission_patch {
                 downloadImage(imageKey: image)
@@ -67,7 +65,7 @@ class LaunchDetailViewController: UIViewController {
         }
     }
     
-    func downloadImage(imageKey:String) {
+    private func downloadImage(imageKey:String) {
         if let imageUrl = URL(string: imageKey) {
             DispatchQueue.main.async {
                 let resource = ImageResource(downloadURL: imageUrl)

@@ -37,9 +37,7 @@ class ListViewController: UIViewController {
         theTableView.dataSource = self
         theTableView.delegate = self
         
-        DispatchQueue.global(qos: .userInitiated).sync {
-            self.getRocketLaunches()
-        }
+        getRocketLaunches()
     }
 }
 
@@ -161,7 +159,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension ListViewController {
     
-    func getRocketLaunches() {
+    private func getRocketLaunches() {
         appDelegate.rootVC.stateActivityIndicator(isOn: true)
         ServiceManager.shared.getRocketLaunches(parameters: nil) { (response, isOK) in
             appDelegate.rootVC.stateActivityIndicator(isOn: false)
@@ -179,7 +177,7 @@ extension ListViewController {
         }
     }
     
-    func getRocketLaunchesUpcoming() {
+    private func getRocketLaunchesUpcoming() {
         appDelegate.rootVC.stateActivityIndicator(isOn: true)
         ServiceManager.shared.getRocketLaunchesUpcoming(parameters: nil) { (response, isOK) in
             appDelegate.rootVC.stateActivityIndicator(isOn: false)
@@ -189,7 +187,7 @@ extension ListViewController {
         }
     }
     
-    func fillUpcomingResponse(upcomingResponse:[LaunchUpcomingResponse]) {
+    private func fillUpcomingResponse(upcomingResponse:[LaunchUpcomingResponse]) {
         for (_, responseData) in upcomingResponse.enumerated() {
             if responseData.links?.mission_patch != nil {
                 launchUpcomingResponse.append(responseData)

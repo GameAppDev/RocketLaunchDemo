@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func openRoot() {
-        rootVC = self.theStoryboard.instantiateViewController(withIdentifier: "RootVC") as? RootViewController
+    private func openRoot() {
+        rootVC = theStoryboard.instantiateViewController(withIdentifier: "RootVC") as? RootViewController
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
