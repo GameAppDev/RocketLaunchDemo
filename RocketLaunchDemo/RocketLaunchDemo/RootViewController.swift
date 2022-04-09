@@ -17,9 +17,9 @@ class RootViewController: UIViewController {
     @IBOutlet var bottomSafeArea: UIView!
     @IBOutlet var activeView: UIView!
     
-    var activeNC:UINavigationController?
+    private var activeNC:UINavigationController?
     
-    var activity:XActivityView?
+    private var activity:XActivityView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,8 @@ class RootViewController: UIViewController {
             activeView.addSubview(ListNC.view!)
             
             activeNC = ListNC
+            
+            activeNC?.interactivePopGestureRecognizer?.delegate = self
         }
     }
     
@@ -43,15 +45,29 @@ class RootViewController: UIViewController {
         bottomSafeArea.backgroundColor = UIColor.clear
     }
     
-    func stateActivityIndicator(isOn:Bool) {
-        if isOn {
-            activity = XActivityView(frame: self.view.frame)
-            self.view.addSubview(activity!)
-        } else {
-            if activity != nil && activity?.theActivity != nil {
-                activity?.theActivity.stopAnimating()
-                activity?.removeFromSuperview()
+    func setActivityIndicator(isOn:Bool) {
+        DispatchQueue.main.async { [self] in
+            if isOn {
+                activity = XActivityView(frame: self.view.frame)
+                view.addSubview(activity!)
+            }
+            else {
+                if activity != nil && activity?.theActivity != nil {
+                    activity?.theActivity.stopAnimating()
+                    activity?.removeFromSuperview()
+                }
             }
         }
+    }
+}
+
+extension RootViewController: UIGestureRecognizerDelegate {
+
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        activeNC?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

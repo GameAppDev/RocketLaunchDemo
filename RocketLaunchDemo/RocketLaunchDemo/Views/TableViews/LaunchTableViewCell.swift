@@ -22,7 +22,7 @@ class LaunchTableViewCell: UITableViewCell {
     
     @IBOutlet var cellViewHeightC: NSLayoutConstraint!
     
-    let identifierL:String = "LaunchTableViewCell"
+    let identifier:String = "LaunchTableViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

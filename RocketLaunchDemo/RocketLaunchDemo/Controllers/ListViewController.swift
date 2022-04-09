@@ -15,15 +15,13 @@ import SwiftUI
 class ListViewController: UIViewController {
 
     @IBOutlet var theTableView: UITableView!
-    let identifierS:String = "SlideTableViewCell"
-    var slideCell:SlideTableViewCell?
-    let identifierL:String = "LaunchTableViewCell"
-    var launchCell:LaunchTableViewCell?
+    private var slideCell:SlideTableViewCell?
+    private var launchCell:LaunchTableViewCell?
     
-    var imageCollCell:SlideImageCollectionViewCell?
+    private var imageCollCell:SlideImageCollectionViewCell?
     
-    var launchResponse:[LaunchResponse] = []
-    var launchUpcomingResponse:[LaunchUpcomingResponse] = []
+    private var launchResponse:[LaunchResponse] = []
+    private var launchUpcomingResponse:[LaunchUpcomingResponse] = []
     
     //var collIndex:Int = 0
     
@@ -32,8 +30,8 @@ class ListViewController: UIViewController {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
-        theTableView.registerCell(identifier: identifierS)
-        theTableView.registerCell(identifier: identifierL)
+        theTableView.registerCell(identifier: SlideTableViewCell().identifier)
+        theTableView.registerCell(identifier: LaunchTableViewCell().identifier)
         theTableView.dataSource = self
         theTableView.delegate = self
         
@@ -49,7 +47,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            slideCell = theTableView.dequeueReusableCell(withIdentifier: identifierS, for: indexPath) as? SlideTableViewCell
+            slideCell = theTableView.dequeueReusableCell(withIdentifier: SlideTableViewCell().identifier, for: indexPath) as? SlideTableViewCell
             
             slideCell?.theCollectionView.register(UINib(nibName:"SlideImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "slideImageCollCell")
             slideCell?.theCollectionView.dataSource = self
@@ -61,7 +59,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
             return slideCell!
         }
         else {
-            launchCell = theTableView.dequeueReusableCell(withIdentifier: identifierL, for: indexPath) as? LaunchTableViewCell
+            launchCell = theTableView.dequeueReusableCell(withIdentifier: LaunchTableViewCell().identifier, for: indexPath) as? LaunchTableViewCell
             
             let launch = launchResponse[indexPath.row-1]
             
@@ -102,7 +100,7 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        imageCollCell = collectionView.dequeueReusableCell(withReuseIdentifier: "slideImageCollCell", for: indexPath) as? SlideImageCollectionViewCell
+        imageCollCell = collectionView.dequeueReusableCell(withReuseIdentifier: SlideImageCollectionViewCell().identifier, for: indexPath) as? SlideImageCollectionViewCell
 
         let launchUpcoming = launchUpcomingResponse[indexPath.row]
         
@@ -160,9 +158,9 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension ListViewController {
     
     private func getRocketLaunches() {
-        appDelegate.rootVC.stateActivityIndicator(isOn: true)
+        appDelegate.rootVC.setActivityIndicator(isOn: true)
         ServiceManager.shared.getRocketLaunches(parameters: nil) { (response, isOK) in
-            appDelegate.rootVC.stateActivityIndicator(isOn: false)
+            appDelegate.rootVC.setActivityIndicator(isOn: false)
             if isOK {
                 if let rocketResponse = response {
                     self.launchResponse = rocketResponse
@@ -178,9 +176,9 @@ extension ListViewController {
     }
     
     private func getRocketLaunchesUpcoming() {
-        appDelegate.rootVC.stateActivityIndicator(isOn: true)
+        appDelegate.rootVC.setActivityIndicator(isOn: true)
         ServiceManager.shared.getRocketLaunchesUpcoming(parameters: nil) { (response, isOK) in
-            appDelegate.rootVC.stateActivityIndicator(isOn: false)
+            appDelegate.rootVC.setActivityIndicator(isOn: false)
             if isOK {
                 self.fillUpcomingResponse(upcomingResponse: response ?? [])
             }

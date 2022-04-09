@@ -21,7 +21,7 @@ class ServiceManager {
     
     typealias tokenHandler = (_ request:URLRequest?, Bool) -> Void
     
-    func getRocketLaunches(parameters:String?,_ completion:@escaping ([LaunchResponse]?, Bool) -> () )  {
+    func getRocketLaunches(parameters:String?,_ completion:@escaping ([LaunchResponse]?, Bool) -> ()) {
         
         let errorCode = "1000"
         
@@ -55,7 +55,7 @@ class ServiceManager {
         })
     }
     
-    func getRocketLaunchesUpcoming(parameters:String?, _ completion:@escaping ([LaunchUpcomingResponse]?, Bool) -> () )  {
+    func getRocketLaunchesUpcoming(parameters:String?, _ completion:@escaping ([LaunchUpcomingResponse]?, Bool) -> ()) {
         
         let errorCode = "1001"
         

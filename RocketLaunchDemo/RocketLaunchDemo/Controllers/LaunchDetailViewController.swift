@@ -22,7 +22,7 @@ class LaunchDetailViewController: UIViewController {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     
-    var selectedLaunch:LaunchResponse?
+    var selectedLaunch:LaunchResponse? //previous
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +37,12 @@ class LaunchDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.navBarBGColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.lightGray
     }
     

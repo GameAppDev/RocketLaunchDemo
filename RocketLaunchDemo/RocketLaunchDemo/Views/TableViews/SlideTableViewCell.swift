@@ -17,7 +17,7 @@ class SlideTableViewCell: UITableViewCell {
     @IBOutlet var theCollectionView: UICollectionView!
     @IBOutlet var pageControl: UIPageControl!
     
-    let identifierS:String = "SlideTableViewCell"
+    let identifier:String = "SlideTableViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
