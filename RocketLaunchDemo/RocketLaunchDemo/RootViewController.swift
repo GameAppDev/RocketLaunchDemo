@@ -19,7 +19,7 @@ class RootViewController: UIViewController {
     
     private var activeNC:UINavigationController?
     
-    private var activity:XActivityView?
+    private var activityView:ActivityView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class RootViewController: UIViewController {
         view.layoutIfNeeded()
         
         DispatchQueue.main.async {
-            self.setupViews()
+            self.changeSafeAreaColour(topSAColour: UIColor.lightGray, bottomSAColour: UIColor.clear)
         }
         
         if let ListNC = appDelegate.theStoryboard.instantiateViewController(withIdentifier: "ListNC") as? UINavigationController {
@@ -40,21 +40,25 @@ class RootViewController: UIViewController {
         }
     }
     
-    private func setupViews() {
-        topSafeArea.backgroundColor = UIColor.lightGray
-        bottomSafeArea.backgroundColor = UIColor.clear
+    public func changeSafeAreaColour(topSAColour:UIColor? = nil, bottomSAColour:UIColor? = nil) {
+        if let colour = topSAColour {
+            topSafeArea.backgroundColor = colour
+        }
+        if let colour = bottomSAColour {
+            bottomSafeArea.backgroundColor = colour
+        }
     }
     
-    func setActivityIndicator(isOn:Bool) {
+    public func setActivityIndicator(isOn:Bool, message:String? = nil) {
         DispatchQueue.main.async { [self] in
             if isOn {
-                activity = XActivityView(frame: self.view.frame)
-                view.addSubview(activity!)
+                activityView = ActivityView(frame: self.view.frame, message: message)
+                view.addSubview(activityView!)
             }
             else {
-                if activity != nil && activity?.theActivity != nil {
-                    activity?.theActivity.stopAnimating()
-                    activity?.removeFromSuperview()
+                if activityView != nil && activityView?.activity != nil {
+                    activityView?.activity.stopAnimating()
+                    activityView?.removeFromSuperview()
                 }
             }
         }

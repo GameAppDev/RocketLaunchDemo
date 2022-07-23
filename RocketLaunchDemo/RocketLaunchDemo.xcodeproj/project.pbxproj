@@ -23,10 +23,11 @@
 		18AF0BAE27944714002E5499 /* SlideTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0BAC27944714002E5499 /* SlideTableViewCell.xib */; };
 		18AF0BB327945083002E5499 /* SlideImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF0BB127945083002E5499 /* SlideImageCollectionViewCell.swift */; };
 		18AF0BB427945083002E5499 /* SlideImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0BB227945083002E5499 /* SlideImageCollectionViewCell.xib */; };
-		18AF0BB727947414002E5499 /* XActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF0BB527947414002E5499 /* XActivityView.swift */; };
-		18AF0BB827947414002E5499 /* XActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF0BB627947414002E5499 /* XActivityView.xib */; };
 		18F3B1CB27D11CC600E520A5 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F3B1CA27D11CC600E520A5 /* AppStyle.swift */; };
 		18FABB0E27D3C7DD00F429A5 /* RocketLaunchDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FABB0D27D3C7DD00F429A5 /* RocketLaunchDemoTests.swift */; };
+		5C9C12AE288C330300C3CB09 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C12AD288C330300C3CB09 /* Enums.swift */; };
+		5C9C12B0288C364400C3CB09 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C12AF288C364400C3CB09 /* ActivityView.swift */; };
+		5C9C12B4288C389B00C3CB09 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C9C12B3288C389B00C3CB09 /* ActivityView.xib */; };
 		848009E44896D37E76EB5B22 /* Pods_RocketLaunchDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A00492807CF5416587EA20 /* Pods_RocketLaunchDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,11 +60,12 @@
 		18AF0BAC27944714002E5499 /* SlideTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideTableViewCell.xib; sourceTree = "<group>"; };
 		18AF0BB127945083002E5499 /* SlideImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		18AF0BB227945083002E5499 /* SlideImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideImageCollectionViewCell.xib; sourceTree = "<group>"; };
-		18AF0BB527947414002E5499 /* XActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XActivityView.swift; sourceTree = "<group>"; };
-		18AF0BB627947414002E5499 /* XActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XActivityView.xib; sourceTree = "<group>"; };
 		18F3B1CA27D11CC600E520A5 /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		18FABB0B27D3C7DC00F429A5 /* RocketLaunchDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RocketLaunchDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18FABB0D27D3C7DD00F429A5 /* RocketLaunchDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketLaunchDemoTests.swift; sourceTree = "<group>"; };
+		5C9C12AD288C330300C3CB09 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		5C9C12AF288C364400C3CB09 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		5C9C12B3288C389B00C3CB09 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		67A00492807CF5416587EA20 /* Pods_RocketLaunchDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RocketLaunchDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E9AC32881A0ADB31D66F10 /* Pods-RocketLaunchDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketLaunchDemo.debug.xcconfig"; path = "Target Support Files/Pods-RocketLaunchDemo/Pods-RocketLaunchDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		ECE9D67D3BBA78D2351DE3DC /* Pods-RocketLaunchDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketLaunchDemo.release.xcconfig"; path = "Target Support Files/Pods-RocketLaunchDemo/Pods-RocketLaunchDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,8 +138,8 @@
 		18A0C13A2792F7C600FAD30C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				18AF0BB527947414002E5499 /* XActivityView.swift */,
-				18AF0BB627947414002E5499 /* XActivityView.xib */,
+				5C9C12AF288C364400C3CB09 /* ActivityView.swift */,
+				5C9C12B3288C389B00C3CB09 /* ActivityView.xib */,
 				18AF0BB027945063002E5499 /* CollectionViews */,
 				18AF0BAF2794504D002E5499 /* TableViews */,
 			);
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				18A0C1422792FC3600FAD30C /* DataModels.swift */,
+				5C9C12AD288C330300C3CB09 /* Enums.swift */,
 				18A0C1452793084100FAD30C /* ServiceManager.swift */,
 			);
 			path = Models;
@@ -300,9 +303,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18AF0BA82794214A002E5499 /* LaunchTableViewCell.xib in Resources */,
+				5C9C12B4288C389B00C3CB09 /* ActivityView.xib in Resources */,
 				18A0C1302792F41700FAD30C /* LaunchScreen.storyboard in Resources */,
 				18AF0BB427945083002E5499 /* SlideImageCollectionViewCell.xib in Resources */,
-				18AF0BB827947414002E5499 /* XActivityView.xib in Resources */,
 				18A0C12D2792F41700FAD30C /* Assets.xcassets in Resources */,
 				18AF0BAE27944714002E5499 /* SlideTableViewCell.xib in Resources */,
 				18A0C12B2792F41500FAD30C /* Main.storyboard in Resources */,
@@ -372,9 +375,10 @@
 				18A0C1432792FC3600FAD30C /* DataModels.swift in Sources */,
 				18AF0BAA279428A1002E5499 /* Extensions.swift in Sources */,
 				18AF0BAD27944714002E5499 /* SlideTableViewCell.swift in Sources */,
-				18AF0BB727947414002E5499 /* XActivityView.swift in Sources */,
+				5C9C12AE288C330300C3CB09 /* Enums.swift in Sources */,
 				18A0C1382792F5DD00FAD30C /* RootViewController.swift in Sources */,
 				18A0C13E2792F81B00FAD30C /* ListViewController.swift in Sources */,
+				5C9C12B0288C364400C3CB09 /* ActivityView.swift in Sources */,
 				18AF0BA72794214A002E5499 /* LaunchTableViewCell.swift in Sources */,
 				18A0C1462793084100FAD30C /* ServiceManager.swift in Sources */,
 			);

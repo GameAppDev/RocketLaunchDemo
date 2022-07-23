@@ -10,7 +10,6 @@
 
 
 import UIKit
-import SwiftUI
 
 class ListViewController: UIViewController {
 
@@ -23,7 +22,7 @@ class ListViewController: UIViewController {
     private var launchResponse:[LaunchResponse] = []
     private var launchUpcomingResponse:[LaunchUpcomingResponse] = []
     
-    //var collIndex:Int = 0
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +34,14 @@ class ListViewController: UIViewController {
         theTableView.dataSource = self
         theTableView.delegate = self
         
+        refreshControl.attributedTitle = NSAttributedString(string: "Almost...")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        theTableView.addSubview(refreshControl)
+        
+        getRocketLaunches()
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
         getRocketLaunches()
     }
 }
@@ -49,12 +56,9 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             slideCell = theTableView.dequeueReusableCell(withIdentifier: SlideTableViewCell().identifier, for: indexPath) as? SlideTableViewCell
             
-            slideCell?.theCollectionView.register(UINib(nibName:"SlideImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "slideImageCollCell")
+            slideCell?.theCollectionView.register(UINib(nibName: "SlideImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: SlideImageCollectionViewCell().identifier)
             slideCell?.theCollectionView.dataSource = self
             slideCell?.theCollectionView.delegate = self
-            
-            //let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRecognized))
-            //slideCell?.cellView.addGestureRecognizer(swipe)
             
             return slideCell!
         }
@@ -92,7 +96,6 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-
 extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -118,47 +121,13 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: CGFloat(280).ws, height: CGFloat(230).ws)
     }
-    /*
-    @objc func swipeRecognized(gesture: UIGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            
-            switch swipeGesture.direction {
-            case .right:
-                collIndex -= 1
-                (collIndex == -1) ? (collIndex = 0) : ()
-                
-                slideCell?.pageControl.currentPage = collIndex
-                
-                let index = IndexPath(row: collIndex, section: 0)
-                slideCell?.theCollectionView.scrollToItem(at: index, at: .left, animated: true)
-                
-            case .down:
-                print("Swiped down")
-                
-            case .left:
-                collIndex += 1
-                (collIndex > launchUpcomingResponse.count-1) ? (collIndex = launchUpcomingResponse.count-1) : ()
-                
-                slideCell?.pageControl.currentPage = collIndex
-                
-                let index = IndexPath(row: collIndex, section: 0)
-                slideCell?.theCollectionView.scrollToItem(at: index, at: .right, animated: true)
-                
-            case .up:
-                print("Swiped up")
-                
-            default:
-                break
-            }
-        }
-    }
-    */
 }
 
+// API Request
 extension ListViewController {
     
     private func getRocketLaunches() {
-        appDelegate.rootVC.setActivityIndicator(isOn: true)
+        appDelegate.rootVC.setActivityIndicator(isOn: true, message: "Rocket is going, \nlook at the air!")
         ServiceManager.shared.getRocketLaunches(parameters: nil) { (response, isOK) in
             appDelegate.rootVC.setActivityIndicator(isOn: false)
             if isOK {
@@ -180,22 +149,17 @@ extension ListViewController {
         ServiceManager.shared.getRocketLaunchesUpcoming(parameters: nil) { (response, isOK) in
             appDelegate.rootVC.setActivityIndicator(isOn: false)
             if isOK {
+                self.refreshControl.endRefreshing()
                 self.fillUpcomingResponse(upcomingResponse: response ?? [])
             }
         }
     }
     
     private func fillUpcomingResponse(upcomingResponse:[LaunchUpcomingResponse]) {
-        for (_, responseData) in upcomingResponse.enumerated() {
-            if responseData.links?.mission_patch != nil {
-                launchUpcomingResponse.append(responseData)
-            }
-        }
-        
-        if launchUpcomingResponse.count < 2 {
-            for index in 0..<3 {
-                let newResponse = LaunchUpcomingResponse(mission_name: "Rocket \(index)", links: nil)
-                launchUpcomingResponse.append(newResponse)
+        launchUpcomingResponse.removeAll()
+        for response in upcomingResponse {
+            if response.isReadyToAdvance() {
+                launchUpcomingResponse.append(response)
             }
         }
         

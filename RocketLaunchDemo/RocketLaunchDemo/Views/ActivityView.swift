@@ -1,8 +1,8 @@
 //
-// XActivityView.swift
+// ActivityView.swift
 // RocketLaunchDemo
 //
-// Created on 16.01.2022.
+// Created on 23.07.2022.
 // Oguzhan Yalcin
 //
 //
@@ -11,14 +11,22 @@
 
 import UIKit
 
-class XActivityView: UIView {
+class ActivityView: UIView {
     
     @IBOutlet var view: UIView!
-    @IBOutlet var theActivity: UIActivityIndicatorView!
-    @IBOutlet var theLogo: UIImageView!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+    @IBOutlet weak var messageLabel: UILabel!
+    
+    private var message:String?
+    
+    init(frame: CGRect, message:String?) {
+        self.message = message
+        super.init(frame: frame)
+        initSubviews()
+    }
     
     override init(frame: CGRect) {
-        super.init(frame:  frame)
+        super.init(frame: frame)
         initSubviews()
     }
     
@@ -33,7 +41,8 @@ class XActivityView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         
-        theActivity.startAnimating()
+        activity.startAnimating()
+        messageLabel.text = message
         
         addConstraints()
     }

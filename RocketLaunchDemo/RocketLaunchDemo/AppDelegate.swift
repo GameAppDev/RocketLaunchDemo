@@ -11,7 +11,7 @@
 
 import UIKit
 
-let appMode = "test" // test or live
+let appMode:AppMode = .dev
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 @main
@@ -37,4 +37,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
     }
 }
-

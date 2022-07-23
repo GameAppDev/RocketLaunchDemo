@@ -17,7 +17,7 @@ class SlideImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet var theLabel: UILabel!
     @IBOutlet var theImageView: UIImageView!
     
-    let identifier:String = "slideImageCollCell"
+    let identifier:String = "SlideImageCollCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
