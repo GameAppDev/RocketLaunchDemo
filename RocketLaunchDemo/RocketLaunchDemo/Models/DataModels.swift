@@ -53,11 +53,11 @@ struct Cores:Codable {
     let core_serial:String?
     let flight:Int?
     let block:Int?
-    let gridfins:Int?//Bool?
-    let legs:Int?//Bool?
-    let reused:Int?//Bool?
-    let land_success:Int?//Bool?
-    let landing_intent:Int?//Bool?
+    let gridfins:Int?
+    let legs:Int?
+    let reused:Int?
+    let land_success:Int?
+    let landing_intent:Int?
     let landing_type:String?
     let landing_vehicle:String?
 }
@@ -70,7 +70,7 @@ struct SecondStage:Codable {
 struct Payloads:Codable {
     let payload_id:String?
     let norad_id:[Int]?
-    let reused:Int?//Bool?
+    let reused:Int?
     let customers:[String]?
     let nationality:String?
     let manufacturer:String?
@@ -100,9 +100,9 @@ struct OrbitParams:Codable {
 }
 
 struct Fairings:Codable {
-    let reused:Int?//Bool?
-    let recovery_attempt:Int?//Bool?
-    let recovered:Int?//Bool?
+    let reused:Int?
+    let recovery_attempt:Int?
+    let recovered:Int?
     let ship:String?
 }
 

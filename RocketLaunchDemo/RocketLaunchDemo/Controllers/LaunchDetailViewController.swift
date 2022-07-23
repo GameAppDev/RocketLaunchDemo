@@ -38,12 +38,12 @@ class LaunchDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.navBarBGColor
+        appDelegate.rootVC.changeSafeAreaColour(topSAColour: UIColor.navBarBGColor)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        appDelegate.rootVC.topSafeArea.backgroundColor = UIColor.lightGray
+        appDelegate.rootVC.changeSafeAreaColour(bottomSAColour: UIColor.lightGray)
     }
     
     private func setupViews() {
@@ -51,19 +51,22 @@ class LaunchDetailViewController: UIViewController {
     }
     
     private func setSelectedLaunch() {
-        if let launch = selectedLaunch {
-            if let image = launch.links?.mission_patch {
-                downloadImage(imageKey: image)
-            }
-            
-            titleLabel.text = launch.mission_name
-            descriptionLabel.text = launch.details
-            
-            if let rocketDate = launch.launch_date_utc {
-                let launchDate = rocketDate.toDate()
-                let formattedLaunchDate = launchDate.toString(formatType: "dd-MM-yyyy")
-                dateLabel.text = formattedLaunchDate
-            }
+        guard let launch = selectedLaunch else {
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        
+        if let image = launch.links?.mission_patch {
+            downloadImage(imageKey: image)
+        }
+        
+        titleLabel.text = launch.mission_name
+        descriptionLabel.text = launch.details
+        
+        if let rocketDate = launch.launch_date_utc {
+            let launchDate = rocketDate.toDate()
+            let formattedLaunchDate = launchDate.toString(formatType: "dd-MM-yyyy")
+            dateLabel.text = formattedLaunchDate
         }
     }
     
