@@ -43,7 +43,7 @@ class LaunchDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        appDelegate.rootVC.changeSafeAreaColour(bottomSAColour: UIColor.lightGray)
+        appDelegate.rootVC.changeSafeAreaColour(topSAColour: UIColor.lightGray)
     }
     
     private func setupViews() {
